@@ -16,6 +16,7 @@ const git=(...args)=>execFileSync('git',['-C',lahde,...args],{encoding:'utf8'}).
 assert.equal(git('status','--porcelain'),'','Committoi lähteen muutokset ennen julkaisupaketin kokoamista.');
 const commit=git('rev-parse','HEAD'),haara=git('branch','--show-current');
 const tiedostot=[
+  'LICENSE',
   'docs/livia-svg.html','docs/livia-svg.css','docs/livia-svg-demo.mjs','docs/livia-uudet-versiot.mjs',
   'js/livia-svg.js','js/livia-svg-paa.js','js/livia-pikselit.js','js/livia-hoyhenet.js','js/livia-astronautti.js',
   'assets/livia/livia-astronauttikypara-2x.png',
@@ -32,6 +33,7 @@ for(const polku of tiedostot){
     html=html.replace('href="livia-chat.html"','href="https://matkakirja.app/docs/livia-chat.html"')
       .replace('Kokeile chatin kanssa','Chattikokeilu pelisivulla').replace('href="../"','href="https://matkakirja.app/"')
       .replace('<footer>',`<footer><span>Itsenäinen elekatselu · päivitetty ${paivitetty}</span><br>`)
+      .replace('</footer>',' · <a href="../LICENSE">Käyttöehdot</a><br>© 2026 Visuaaliviestinnän Instituutti Tampere Oy</footer>')
       .replace('<meta name="viewport"','<meta name="robots" content="noindex,nofollow"><meta name="viewport"')
       .replace('<title>Livia — kaikki eleet</title>','<title>Pulun eleet — katselu</title><link rel="icon" href="data:,">');
     julkaisu=Buffer.from(html);
@@ -62,6 +64,7 @@ await mkdir(resolve(juuri,'docs/docs'),{recursive:true});
 await writeFile(resolve(juuri,'docs/index.html'),html.replace('<head>',`<head><base href="./versiot/${versio}/docs/">`));
 await writeFile(resolve(juuri,'docs/docs/livia-svg.html'),html.replace('<head>',`<head><base href="../versiot/${versio}/docs/">`));
 await writeFile(resolve(juuri,'docs/.nojekyll'),'');
+await writeFile(resolve(juuri,'LICENSE'),sisallot.get('LICENSE'));
 const kuitti={lahde:'https://github.com/ravelius/Matkakirja',haara,commit,versio,tiedostot:kuitit};
 await writeFile(resolve(juuri,'docs/versio.json'),JSON.stringify(kuitti,null,2)+'\n');
 await writeFile(resolve(kohde,'versio.json'),JSON.stringify(kuitti,null,2)+'\n');

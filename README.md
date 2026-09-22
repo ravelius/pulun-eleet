@@ -27,14 +27,33 @@ Versiopolut estävät uuden sivun ja vanhan JavaScriptin sekoittumisen
 välimuistissa. Vanhat versiot jäävät talteen. Sivusto ei käytä service workeria,
 seurantaa, kirjautumista, äänten generointia tai pelitallennuksia.
 
-Julkaisutyökalu kopioi vain kymmenen nimettyä, julkisesta Matkakirja-reposta
-peräisin olevaa katselutiedostoa. Se sovittaa sivun ulkolinkit ja astronautin
+Julkaisutyökalu kopioi vain kymmenen nimettyä katselutiedostoa ja alkuperäiset
+käyttöehdot julkisesta Matkakirja-reposta. Se sovittaa sivun ulkolinkit ja astronautin
 kypärän osoitteen itsenäiselle sivustolle; pelin lähdetiedostot eivät muutu.
+Sivusto on tekijän tilaama erillinen katselu, ja alkuperäiset käyttöehdot
+säilyvät. Julkisuus ei anna oikeutta käyttää aineistoa muihin tuotteisiin.
 
 ## Seuraava taiteellinen vaihe
 
+Kirjan korjattu suunta ja kannet on hyväksytty 22.9.2026: niitä ei muuteta.
 Omistaja on antanut luvan siirtää myös vanhat eleet uuden katselupohjan
 sulavaan liikkeeseen. Ensin katsotaan **Hauska nähdä** -eleen suurempi
 linnunsuu. Suun käyttö muissa eleissä valitaan ilmeen tarkoituksen mukaan;
 sitä ei lisätä jokaiseen eleeseen automaattisesti. Katselumuutos ja peliin
 integrointi ovat erilliset vaiheet.
+
+## Selainvarmennus
+
+`node tyokalut/tarkista-selain.mjs` tarkistaa julkisen osoitteen kaikki
+75 valintaa, viiden uuden eleen aidon ajallisen toiston, suun ja kielen
+näkyvyyden, kirjan suunnan, 390 px leveyden, vähennetyn liikkeen sekä
+kaikkien julkaistujen tiedostojen tiivisteet. Se tarvitsee Playwrightin;
+`PLAYWRIGHT_MODULE` voi osoittaa valmiiseen asennukseen ja `CHROME_PATH`
+paikalliseen Chromeen. Kuittaus tulostuu lopuksi, kaappaukset menevät
+oletuksena `/tmp/pulu-julkaistu-suu.png` ja `/tmp/pulu-julkaistu-kirja.png`.
+
+Viides katseluele on omistajan pyytämä **Kiireinen kirjanhaku** (11 s):
+seitsemän nopeaa sivunkääntöä syvässä kyyryssä, hiki, havahtuminen, kirjan
+läimäys kiinni, pitkäksi suoristautuminen, visuaalinen vihellys ja hidas
+kirjan kääntö, kirjan avaaminen, silmälasien oikaisu ja arvokas loppuasento.
+Se on erillinen harvinainen sähläysnumero; hyväksytty rauhallinen selaus säilyy.
