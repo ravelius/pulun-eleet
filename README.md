@@ -78,3 +78,10 @@ mukaan nuori naaras: utelias, viehättävä ja omanarvontuntoinen. Koralliroosa
 kaulahuivi, suuret silmät, selkeä ääriviiva ja joustava nokka muuttavat
 piirroksen ilmettä. Ei ihmishuulia tai hampaita. Aiemmat yhdeksän ehdotusta
 säilyvät tavulleen. Tämä ei ole hahmon vaihtaminen peliin.
+
+Omistajan seuraava tarkennus: oma kyyhkyhahmo sarjakuvan maailmassa,
+ei Aku Ankkaa muistuttava Pulu. Toisessa piirroksessa on lyhyempi ja
+terävämpi kyyhkyn nokka, kevyemmät kulmat, lämpimämpi katse, pienet
+ripset ja pehmeämmät posket. Huivi ja tervehdysrata säilyvät. Sama
+kokeilupainike päivittyy, edellinen piirros säilyy versiona
+`cc2bf7a24c35-571733d1`.

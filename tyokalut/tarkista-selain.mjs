@@ -22,6 +22,11 @@ try{
   assert.equal(await sivu.locator('#zoom [data-style="sarjakuvakokeilu"]').count(),1);
   assert.equal(await sivu.locator('#zoom [data-part="cartoon-eye"]').count(),2);
   assert.equal(await sivu.locator('#zoom [data-part="scarf"]').count(),1);
+  assert.equal(await sivu.locator('#zoom [data-part="cartoon-beak"]').getAttribute('data-beak-shape'),'pigeon');
+  assert.equal(await sivu.locator('#zoom [data-part="eyelashes"]').count(),2);
+  await asento(0);
+  assert.ok(await sivu.locator('#zoom [data-part="cartoon-beak"]').evaluate(el=>el.getBBox().width<48),'nokka on lyhyempi kyyhkyn nokka');
+  await asento(.22);
   assert.equal(await sivu.locator('#zoom [data-part="cartoon-beak"]').getAttribute('data-opening'),'1');
   const sarjaKieli=await sivu.locator('#zoom [data-part="tongue"]').evaluate(el=>{
     const b=el.getBoundingClientRect();return [.2,.4,.6,.8].some(x=>[.2,.4,.6,.8].some(y=>document.elementFromPoint(b.x+b.width*x,b.y+b.height*y)===el));
