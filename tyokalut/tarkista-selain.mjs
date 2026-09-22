@@ -11,8 +11,26 @@ try{
   sivu.on('response',r=>{if(r.status()>=400)virheet.push(r.status()+' '+r.url());});
   const vastaus=await sivu.goto(osoite,{waitUntil:'networkidle'});
   assert.equal(vastaus.status(),200);
-  assert.equal(await sivu.locator('#gesture-categories [aria-pressed=true]').textContent(),'Uudet versiot (5)');
+  const uudet=await sivu.evaluate(async()=>{
+    const {LIVIAN_UUDET_VERSIOT}=await import(new URL('livia-uudet-versiot.mjs',document.baseURI).href);
+    return LIVIAN_UUDET_VERSIOT;
+  });
+  assert.equal(uudet.length,9,'toinen neljän eleen erä on mukana');
+  assert.equal(await sivu.locator('#gesture-categories [aria-pressed=true]').textContent(),`Uudet versiot (${uudet.length})`);
   const asento=async p=>sivu.locator('#position').evaluate((el,p)=>{el.value=p*1000;el.dispatchEvent(new Event('input'));},p);
+  const suueranKuvat=[];
+  for(const [id,p]of [['chuckle',.32],['yawn',.48],['grin',.37],['disbelief',.33]]){
+    await sivu.locator(`[data-gesture="uusi-${id}"]`).click();await asento(p);
+    assert.equal(await sivu.locator('#zoom [data-part="mouth-space"]').count(),1,id+' posken aukko');
+    assert.equal(await sivu.locator('#zoom [data-part="tongue"]').count(),1,id+' kieli');
+    const nakyy=await sivu.locator('#zoom [data-part="tongue"]').evaluate(el=>{
+      const b=el.getBoundingClientRect();
+      return [.2,.4,.6,.8].some(x=>[.2,.4,.6,.8].some(y=>document.elementFromPoint(b.x+b.width*x,b.y+b.height*y)===el));
+    });
+    assert.ok(nakyy,id+' kieli näkyy eikä jää siiven tai alaleuan taakse');
+    suueranKuvat.push(await sivu.locator('#zoom').innerHTML());
+  }
+  assert.equal(new Set(suueranKuvat).size,4);
   await sivu.locator('[data-gesture="uusi-welcome"]').click();await asento(.22);
   assert.equal(await sivu.locator('#zoom [data-part="friendly-beak"]').getAttribute('data-opening'),'1');
   assert.equal(await sivu.locator('#zoom [data-part="tongue"]').count(),1);
@@ -47,15 +65,17 @@ try{
       assert.ok(!/NaN|Infinity|undefined/.test(await sivu.locator('#actual').innerHTML()),id);
     }
   }
-  assert.equal(eleet.size,75);
+  assert.equal(eleet.size,70+uudet.length);
   await sivu.locator('[data-category="uudet-versiot"]').click();
   await sivu.locator('#all').click();
   const nahdyt=new Set();
-  for(let i=0;i<58;i++){
+  const loppuraja=Date.now()+uudet.reduce((sum,e)=>sum+e.duration+650,0)+5000;
+  while(Date.now()<loppuraja){
     nahdyt.add(await sivu.locator('#actual svg').getAttribute('data-uusi-versio'));
+    if(await sivu.locator('#all').getAttribute('aria-pressed')==='false')break;
     await sivu.waitForTimeout(500);
   }
-  assert.equal(nahdyt.size,5);assert.ok(!nahdyt.has(null));
+  assert.deepEqual([...nahdyt],uudet.map(e=>e.id));
   assert.equal(await sivu.locator('#all').getAttribute('aria-pressed'),'false');
   await sivu.setViewportSize({width:390,height:844});
   await sivu.locator('[data-gesture="uusi-welcome"]').click();await asento(.3);
@@ -79,5 +99,5 @@ try{
     const hash=createHash('sha256').update(Buffer.from(await r.arrayBuffer())).digest('hex');
     assert.equal(hash,tiedosto.julkaisuSha256,tiedosto.polku);
   }
-  console.log(JSON.stringify({osoite,versio:kuitti.versio,kategorioita:kategoriat.length,eleita:eleet.size,uusiaLiikkeessa:[...nahdyt],virheet,suu:'PASS',kirja:'PASS',mobiili:'PASS',reduced:'PASS',tiedostojenTiivisteet:'PASS',kypara},null,2));
+  console.log(JSON.stringify({osoite,versio:kuitti.versio,kategorioita:kategoriat.length,eleita:eleet.size,uusiaLiikkeessa:[...nahdyt],virheet,suu:'PASS',toinenSuuerä:'PASS',kirja:'PASS',mobiili:'PASS',reduced:'PASS',tiedostojenTiivisteet:'PASS',kypara},null,2));
 }finally{await selain.close();}

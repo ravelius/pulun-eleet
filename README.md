@@ -37,15 +37,16 @@ säilyvät. Julkisuus ei anna oikeutta käyttää aineistoa muihin tuotteisiin.
 
 Kirjan korjattu suunta ja kannet on hyväksytty 22.9.2026: niitä ei muuteta.
 Omistaja on antanut luvan siirtää myös vanhat eleet uuden katselupohjan
-sulavaan liikkeeseen. Ensin katsotaan **Hauska nähdä** -eleen suurempi
-linnunsuu. Suun käyttö muissa eleissä valitaan ilmeen tarkoituksen mukaan;
+sulavaan liikkeeseen. **Hauska nähdä** -eleen linnunsuun jälkeen toinen
+erä kokeilee suuta naurussa, haukotuksessa, virneessä ja epäuskossa.
+Suun käyttö valitaan ilmeen tarkoituksen mukaan;
 sitä ei lisätä jokaiseen eleeseen automaattisesti. Katselumuutos ja peliin
 integrointi ovat erilliset vaiheet.
 
 ## Selainvarmennus
 
 `node tyokalut/tarkista-selain.mjs` tarkistaa julkisen osoitteen kaikki
-75 valintaa, viiden uuden eleen aidon ajallisen toiston, suun ja kielen
+79 valintaa, yhdeksän uuden eleen aidon ajallisen toiston, suun ja kielen
 näkyvyyden, kirjan suunnan, 390 px leveyden, vähennetyn liikkeen sekä
 kaikkien julkaistujen tiedostojen tiivisteet. Se tarvitsee Playwrightin;
 `PLAYWRIGHT_MODULE` voi osoittaa valmiiseen asennukseen ja `CHROME_PATH`
@@ -60,3 +61,10 @@ Se on erillinen harvinainen sähläysnumero; hyväksytty rauhallinen selaus säi
 Suljettu kirja ei vain pyöri paikoillaan: ranteen vastaliike, nosto rinnan
 lähelle, kahden kierron välissä tapahtuva otteenvaihto ja syvyyssuunnan
 kallistus saavat esineen seuraamaan Pulun siipeä ja vartaloa.
+
+Toisen erän neljä versiota ovat ryhmän alussa: **Hiljainen naurunpyrskähdys**,
+**Valtava haukotus**, **Leveä virne** ja **Et ole tosissasi**. Nauru purkautuu
+kahdessa erikokoisessa painotuksessa, haukotus kasvaa venytykseen, virne
+alkaa silmistä ja epäusko jää hetkeksi paikalleen suu raollaan.
+Kieli ja posken läpi näkyvä aukko kuuluvat kaikkiin neljään. Aiemmat viisi
+katseluversiota säilyvät muuttumattomina. Tämäkään erä ei muuta peliä.
