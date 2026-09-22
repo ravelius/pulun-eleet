@@ -15,9 +15,19 @@ try{
     const {LIVIAN_UUDET_VERSIOT}=await import(new URL('livia-uudet-versiot.mjs',document.baseURI).href);
     return LIVIAN_UUDET_VERSIOT;
   });
-  assert.equal(uudet.length,9,'toinen neljän eleen erä on mukana');
+  assert.equal(uudet.length,10,'sarjakuvakokeilu ja aiemmat yhdeksän ovat mukana');
   assert.equal(await sivu.locator('#gesture-categories [aria-pressed=true]').textContent(),`Uudet versiot (${uudet.length})`);
   const asento=async p=>sivu.locator('#position').evaluate((el,p)=>{el.value=p*1000;el.dispatchEvent(new Event('input'));},p);
+  await asento(.22);
+  assert.equal(await sivu.locator('#zoom [data-style="sarjakuvakokeilu"]').count(),1);
+  assert.equal(await sivu.locator('#zoom [data-part="cartoon-eye"]').count(),2);
+  assert.equal(await sivu.locator('#zoom [data-part="scarf"]').count(),1);
+  assert.equal(await sivu.locator('#zoom [data-part="cartoon-beak"]').getAttribute('data-opening'),'1');
+  const sarjaKieli=await sivu.locator('#zoom [data-part="tongue"]').evaluate(el=>{
+    const b=el.getBoundingClientRect();return [.2,.4,.6,.8].some(x=>[.2,.4,.6,.8].some(y=>document.elementFromPoint(b.x+b.width*x,b.y+b.height*y)===el));
+  });
+  assert.ok(sarjaKieli,'sarjakuvakokeilun kieli näkyy');
+  await sivu.screenshot({path:process.env.KUVA_SARJA||'/tmp/pulu-julkaistu-sarjakuvakoe.png'});
   const suueranKuvat=[];
   for(const [id,p]of [['chuckle',.32],['yawn',.48],['grin',.37],['disbelief',.33]]){
     await sivu.locator(`[data-gesture="uusi-${id}"]`).click();await asento(p);
@@ -99,5 +109,5 @@ try{
     const hash=createHash('sha256').update(Buffer.from(await r.arrayBuffer())).digest('hex');
     assert.equal(hash,tiedosto.julkaisuSha256,tiedosto.polku);
   }
-  console.log(JSON.stringify({osoite,versio:kuitti.versio,kategorioita:kategoriat.length,eleita:eleet.size,uusiaLiikkeessa:[...nahdyt],virheet,suu:'PASS',toinenSuuerä:'PASS',kirja:'PASS',mobiili:'PASS',reduced:'PASS',tiedostojenTiivisteet:'PASS',kypara},null,2));
+  console.log(JSON.stringify({osoite,versio:kuitti.versio,kategorioita:kategoriat.length,eleita:eleet.size,uusiaLiikkeessa:[...nahdyt],virheet,sarjakuvakokeiluJaHuivi:'PASS',suu:'PASS',toinenSuuerä:'PASS',kirja:'PASS',mobiili:'PASS',reduced:'PASS',tiedostojenTiivisteet:'PASS',kypara},null,2));
 }finally{await selain.close();}

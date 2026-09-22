@@ -1,0 +1,85 @@
+Matkakirja — tekijänoikeus ja käyttöehdot
+=========================================
+
+Copyright © 2026 Visuaaliviestinnän Instituutti Tampere Oy. Kaikki oikeudet pidätetään.
+
+
+Suomeksi
+--------
+
+Tämä repo on julkinen, jotta peliä voi katsella, oppia siitä ja antaa
+siitä palautetta. Julkisuus ei kuitenkaan tarkoita, että sisältö olisi
+vapaasti käytettävissä.
+
+Ilman tekijän kirjallista lupaa EI SAA:
+
+  - julkaista peliä tai sen osaa muualla, omalla nimellä tai toisen
+    nimellä,
+  - levittää, myydä tai lisensoida peliä tai sen osaa eteenpäin,
+  - tehdä pelistä muunnelmaa ja julkaista sitä,
+  - käyttää pelin koodia, tekstejä, karttoja tai muuta aineistoa toisessa
+    tuotteessa tai palvelussa.
+
+SAA vapaasti ja ilman erillistä lupaa:
+
+  - pelata peliä,
+  - lukea lähdekoodia ja opiskella sitä,
+  - kloonata tai forkata repo GitHubissa omaan opiskeluun ja
+    kokeiluun sekä ehdottaa muutoksia takaisin tähän repoon,
+  - lainata lyhyitä katkelmia lähdeviittauksin, kuten lainaaminen
+    yleensäkin on sallittua.
+
+Peliin voi osallistua: lähetetyt muutosehdotukset ja sisältö otetaan
+vastaan sillä ymmärryksellä, että tekijä saa käyttää niitä osana peliä
+näillä samoilla ehdoilla.
+
+Yhteydenotot: pelin GitHub-sivun kautta.
+
+
+Kolmannen osapuolen aineisto
+----------------------------
+
+Peli näyttää valokuvia, ääniä ja tietoja, jotka EIVÄT ole tekijän
+omaisuutta eivätkä kuulu yllä olevan tekijänoikeuden piiriin. Ne ovat
+avoimella lisenssillä ja niillä on omat ehtonsa ja tekijänsä:
+
+  - valokuvat ja lippukuvat: Wikimedia Commons (public domain, CC0,
+    CC BY, CC BY-SA),
+  - äänimaisemat: Freesound (CC0, CC BY, CC BY-NC),
+  - kenttä-äänitykset: radio aporee / archive.org (public domain,
+    CC BY, CC BY-SA),
+  - tietosisällön lähteinä Wikipedia (CC BY-SA), Maailmanpankki ja
+    V-Dem / Our World in Data.
+
+Jokaisen tiedoston lähde, tekijä ja lisenssi on merkitty pelin
+sisältötiedostoihin (kentät `lahde`, `aaniLahde` ja `credit`) sekä
+media-arkiston manifestiin. Nämä merkinnät on säilytettävä.
+
+Kolmannen osapuolen aineisto on koottu peliin erillisinä teoksina.
+Kokoaminen ei muuta niiden lisenssejä eikä ulota niitä pelin omaan
+koodiin ja teksteihin.
+
+
+In English
+----------
+
+Copyright © 2026 Visuaaliviestinnän Instituutti Tampere Oy. All rights reserved.
+
+This repository is public so that the game can be viewed, studied and
+commented on. Being public does not make it free to use.
+
+Without the author's written permission you may NOT publish, distribute,
+sell, sublicense or make derivative works of this game or any part of
+it, and you may not use its code, texts or maps in another product or
+service.
+
+You MAY play the game, read and study the source, clone or fork the
+repository on GitHub for your own learning and experimentation, propose
+changes back to this repository, and quote short excerpts with
+attribution.
+
+Photographs, sounds and data shown in the game are NOT covered by this
+copyright. They come from Wikimedia Commons, Freesound, radio aporee,
+Wikipedia, the World Bank and V-Dem under their own open licences, and
+each file's source, author and licence is recorded in the game's content
+files and in the media manifest. Those notices must be preserved.

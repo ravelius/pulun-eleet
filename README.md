@@ -27,7 +27,7 @@ Versiopolut estävät uuden sivun ja vanhan JavaScriptin sekoittumisen
 välimuistissa. Vanhat versiot jäävät talteen. Sivusto ei käytä service workeria,
 seurantaa, kirjautumista, äänten generointia tai pelitallennuksia.
 
-Julkaisutyökalu kopioi vain kymmenen nimettyä katselutiedostoa ja alkuperäiset
+Julkaisutyökalu kopioi vain yksitoista nimettyä katselutiedostoa ja alkuperäiset
 käyttöehdot julkisesta Matkakirja-reposta. Se sovittaa sivun ulkolinkit ja astronautin
 kypärän osoitteen itsenäiselle sivustolle; pelin lähdetiedostot eivät muutu.
 Sivusto on tekijän tilaama erillinen katselu, ja alkuperäiset käyttöehdot
@@ -46,7 +46,7 @@ integrointi ovat erilliset vaiheet.
 ## Selainvarmennus
 
 `node tyokalut/tarkista-selain.mjs` tarkistaa julkisen osoitteen kaikki
-79 valintaa, yhdeksän uuden eleen aidon ajallisen toiston, suun ja kielen
+80 valintaa, kymmenen ehdotuksen aidon ajallisen toiston, suun ja kielen
 näkyvyyden, kirjan suunnan, 390 px leveyden, vähennetyn liikkeen sekä
 kaikkien julkaistujen tiedostojen tiivisteet. Se tarvitsee Playwrightin;
 `PLAYWRIGHT_MODULE` voi osoittaa valmiiseen asennukseen ja `CHROME_PATH`
@@ -68,3 +68,13 @@ kahdessa erikokoisessa painotuksessa, haukotus kasvaa venytykseen, virne
 alkaa silmistä ja epäusko jää hetkeksi paikalleen suu raollaan.
 Kieli ja posken läpi näkyvä aukko kuuluvat kaikkiin neljään. Aiemmat viisi
 katseluversiota säilyvät muuttumattomina. Tämäkään erä ei muuta peliä.
+
+## Erillinen sarjakuvakokeilu
+
+Omistajan 22.9.2026 pyytämä Aku Ankka -henkinen piirrostyylin kokeilu on
+ryhmän ensimmäinen painike **Sarjakuvapulu — tyylikokeilu**. Se käyttää omaa
+SVG-piirrosta ja tutun tervehdyksen ajoitusta. Livia on omistajan täsmennyksen
+mukaan nuori naaras: utelias, viehättävä ja omanarvontuntoinen. Koralliroosa
+kaulahuivi, suuret silmät, selkeä ääriviiva ja joustava nokka muuttavat
+piirroksen ilmettä. Ei ihmishuulia tai hampaita. Aiemmat yhdeksän ehdotusta
+säilyvät tavulleen. Tämä ei ole hahmon vaihtaminen peliin.
