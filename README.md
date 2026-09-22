@@ -97,3 +97,10 @@ tahdeissa. Jalat pysyvät maassa ja ele palaa tarkasti lepoon.
 Hyväksytty hahmopiirros säilyy. Kymmenen aiempaa ehdotusta tuottavat
 samat SVG:t 101 vaiheessa kukin kuin lähdecommitissa `0228e45468b3`.
 Tämäkin ele on itsenäisen katselusivun ehdotus, ei pelin uusi hahmo.
+
+Omistajan seuraava kasvotarkennus: kapeammat kasvot ja hieman särmää
+silmiin. Poskien siluetti kapenee kohti leukaa, takaraivon leveys pienenee
+ja poskien vaalea pyöreä alue on pienempi. Silmät ovat mantelimaisemmat,
+yläluomet viistot ja kulmat hieman epäsymmetriset. Lämmin katse, kieli,
+huivi ja kaikki liikeradat säilyvät. Muutos näkyy molemmissa tämän
+sarjakuvahahmon kokeiluissa; yhdeksän vanhan hahmon versiota ei muutu.

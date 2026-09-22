@@ -43,6 +43,9 @@ try{
   await asento(.22);
   assert.equal(await sivu.locator('#zoom [data-style="sarjakuvakokeilu"]').count(),1);
   assert.equal(await sivu.locator('#zoom [data-part="cartoon-eye"]').count(),2);
+  assert.equal(await sivu.locator('#zoom [data-eye-shape="almond"]').count(),2);
+  const kasvojenMitta=await sivu.locator('#zoom [data-part="face-outline"]').evaluate(el=>{const b=el.getBBox();return {leveys:b.width,korkeus:b.height};});
+  assert.ok(kasvojenMitta.leveys<67&&kasvojenMitta.korkeus>65,'kasvojen siluetti on kapeampi, korkeutta säilyttäen');
   assert.equal(await sivu.locator('#zoom [data-part="scarf"]').count(),1);
   assert.equal(await sivu.locator('#zoom [data-part="cartoon-beak"]').getAttribute('data-beak-shape'),'pigeon');
   assert.equal(await sivu.locator('#zoom [data-part="eyelashes"]').count(),2);
@@ -136,5 +139,5 @@ try{
     const hash=createHash('sha256').update(Buffer.from(await r.arrayBuffer())).digest('hex');
     assert.equal(hash,tiedosto.julkaisuSha256,tiedosto.polku);
   }
-  console.log(JSON.stringify({osoite,versio:kuitti.versio,kategorioita:kategoriat.length,eleita:eleet.size,uusiaLiikkeessa:[...nahdyt],virheet,ihanaNahda:'PASS',sarjakuvakokeiluJaHuivi:'PASS',suu:'PASS',toinenSuuerä:'PASS',kirja:'PASS',mobiili:'PASS',reduced:'PASS',tiedostojenTiivisteet:'PASS',kypara},null,2));
+  console.log(JSON.stringify({osoite,versio:kuitti.versio,kategorioita:kategoriat.length,eleita:eleet.size,uusiaLiikkeessa:[...nahdyt],virheet,ihanaNahda:'PASS',kasvojenMitta,sarjakuvakokeiluJaHuivi:'PASS',suu:'PASS',toinenSuuerä:'PASS',kirja:'PASS',mobiili:'PASS',reduced:'PASS',tiedostojenTiivisteet:'PASS',kypara},null,2));
 }finally{await selain.close();}
