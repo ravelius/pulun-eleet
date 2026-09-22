@@ -15,9 +15,31 @@ try{
     const {LIVIAN_UUDET_VERSIOT}=await import(new URL('livia-uudet-versiot.mjs',document.baseURI).href);
     return LIVIAN_UUDET_VERSIOT;
   });
-  assert.equal(uudet.length,10,'sarjakuvakokeilu ja aiemmat yhdeksän ovat mukana');
+  assert.equal(uudet.length,11,'Livian oma tervehdys ja aiemmat kymmenen ovat mukana');
   assert.equal(await sivu.locator('#gesture-categories [aria-pressed=true]').textContent(),`Uudet versiot (${uudet.length})`);
   const asento=async p=>sivu.locator('#position').evaluate((el,p)=>{el.value=p*1000;el.dispatchEvent(new Event('input'));},p);
+  assert.equal(await sivu.locator('#actual svg').getAttribute('data-uusi-versio'),'uusi-livia-ilahtuu');
+  await asento(.325);
+  assert.equal(await sivu.locator('#zoom [data-part="chest-elbow"]').count(),1);
+  assert.equal(await sivu.locator('#zoom [data-part="chest-elbow"]').getAttribute('opacity'),'1');
+  const siipiRinnalla=await sivu.locator('#zoom').evaluate(el=>{
+    const siipi=el.querySelector('[data-part="near-wing"]').getBoundingClientRect();
+    const silmat=[...el.querySelectorAll('[data-part="cartoon-eye"]')].map(e=>e.getBoundingClientRect());
+    return silmat.every(silma=>siipi.top>silma.bottom);
+  });
+  assert.ok(siipiRinnalla,'rinnan siipi ei peitä silmiä');
+  await asento(.615);
+  assert.equal(await sivu.locator('#zoom [data-part="chest-elbow"]').count(),0);
+  assert.equal(await sivu.locator('#zoom [data-part="breath"]').count(),1);
+  await sivu.screenshot({path:process.env.KUVA_IHANA||'/tmp/pulu-julkaistu-ihana-nahda.png'});
+  await asento(.70);await sivu.locator('#pause').click();
+  assert.ok(Number(await sivu.locator('#position').inputValue())>=700,'Jatka ei nollaa kelattua kohtaa');
+  await sivu.waitForFunction(()=>Number(document.querySelector('#position').value)>730,{},{timeout:1500});
+  await sivu.locator('#pause').click();
+  assert.ok(Number(await sivu.locator('#position').inputValue())<950,'jatkaa kelatusta kohdasta, ei alusta');
+  const pysaytetty=await sivu.locator('#zoom').innerHTML();await sivu.waitForTimeout(150);
+  assert.equal(await sivu.locator('#zoom').innerHTML(),pysaytetty);
+  await sivu.locator('[data-gesture="uusi-sarjakuvapulu"]').click();
   await asento(.22);
   assert.equal(await sivu.locator('#zoom [data-style="sarjakuvakokeilu"]').count(),1);
   assert.equal(await sivu.locator('#zoom [data-part="cartoon-eye"]').count(),2);
@@ -93,7 +115,7 @@ try{
   assert.deepEqual([...nahdyt],uudet.map(e=>e.id));
   assert.equal(await sivu.locator('#all').getAttribute('aria-pressed'),'false');
   await sivu.setViewportSize({width:390,height:844});
-  await sivu.locator('[data-gesture="uusi-welcome"]').click();await asento(.3);
+  await sivu.locator('[data-gesture="uusi-livia-ilahtuu"]').click();await asento(.3);
   assert.equal(await sivu.evaluate(()=>document.documentElement.scrollWidth),390);
   await sivu.emulateMedia({reducedMotion:'reduce'});
   // matchMedia-change saapuu seuraavalla selainkierroksella.
@@ -114,5 +136,5 @@ try{
     const hash=createHash('sha256').update(Buffer.from(await r.arrayBuffer())).digest('hex');
     assert.equal(hash,tiedosto.julkaisuSha256,tiedosto.polku);
   }
-  console.log(JSON.stringify({osoite,versio:kuitti.versio,kategorioita:kategoriat.length,eleita:eleet.size,uusiaLiikkeessa:[...nahdyt],virheet,sarjakuvakokeiluJaHuivi:'PASS',suu:'PASS',toinenSuuerä:'PASS',kirja:'PASS',mobiili:'PASS',reduced:'PASS',tiedostojenTiivisteet:'PASS',kypara},null,2));
+  console.log(JSON.stringify({osoite,versio:kuitti.versio,kategorioita:kategoriat.length,eleita:eleet.size,uusiaLiikkeessa:[...nahdyt],virheet,ihanaNahda:'PASS',sarjakuvakokeiluJaHuivi:'PASS',suu:'PASS',toinenSuuerä:'PASS',kirja:'PASS',mobiili:'PASS',reduced:'PASS',tiedostojenTiivisteet:'PASS',kypara},null,2));
 }finally{await selain.close();}

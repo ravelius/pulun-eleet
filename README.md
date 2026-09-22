@@ -46,7 +46,7 @@ integrointi ovat erilliset vaiheet.
 ## Selainvarmennus
 
 `node tyokalut/tarkista-selain.mjs` tarkistaa julkisen osoitteen kaikki
-80 valintaa, kymmenen ehdotuksen aidon ajallisen toiston, suun ja kielen
+81 valintaa, yhdentoista ehdotuksen aidon ajallisen toiston, suun ja kielen
 näkyvyyden, kirjan suunnan, 390 px leveyden, vähennetyn liikkeen sekä
 kaikkien julkaistujen tiedostojen tiivisteet. Se tarvitsee Playwrightin;
 `PLAYWRIGHT_MODULE` voi osoittaa valmiiseen asennukseen ja `CHROME_PATH`
@@ -72,7 +72,7 @@ katseluversiota säilyvät muuttumattomina. Tämäkään erä ei muuta peliä.
 ## Erillinen sarjakuvakokeilu
 
 Omistajan 22.9.2026 pyytämä Aku Ankka -henkinen piirrostyylin kokeilu on
-ryhmän ensimmäinen painike **Sarjakuvapulu — tyylikokeilu**. Se käyttää omaa
+ryhmän painike **Sarjakuvapulu — tyylikokeilu**. Se käyttää omaa
 SVG-piirrosta ja tutun tervehdyksen ajoitusta. Livia on omistajan täsmennyksen
 mukaan nuori naaras: utelias, viehättävä ja omanarvontuntoinen. Koralliroosa
 kaulahuivi, suuret silmät, selkeä ääriviiva ja joustava nokka muuttavat
@@ -85,3 +85,15 @@ terävämpi kyyhkyn nokka, kevyemmät kulmat, lämpimämpi katse, pienet
 ripset ja pehmeämmät posket. Huivi ja tervehdysrata säilyvät. Sama
 kokeilupainike päivittyy, edellinen piirros säilyy versiona
 `cc2bf7a24c35-571733d1`.
+
+### Hyväksytyn sarjakuvahahmon oma ele
+
+**Ihana nähdä!** on ryhmän ensimmäinen painike (4,4 s). Livia huomaa
+pelaajan, ilahtuu, painaa siiven hetkeksi rinnalleen ja tervehtii yhdellä
+siivellä. Katse johtaa, vartalo hengittää ja siivenkärjet sekä huivi
+seuraavat viiveellä. Nopea havainto ja rauhallinen kontaktipito ovat eri
+tahdeissa. Jalat pysyvät maassa ja ele palaa tarkasti lepoon.
+
+Hyväksytty hahmopiirros säilyy. Kymmenen aiempaa ehdotusta tuottavat
+samat SVG:t 101 vaiheessa kukin kuin lähdecommitissa `0228e45468b3`.
+Tämäkin ele on itsenäisen katselusivun ehdotus, ei pelin uusi hahmo.
