@@ -29,6 +29,8 @@ try{
   assert.ok(await sivu.locator('#zoom [data-part="sweat"]').count()>0);
   assert.equal(await sivu.locator('#zoom [data-part="book-turn"]').getAttribute('transform'),'rotate(180 23 14)');
   await asento(.31);assert.equal(await sivu.locator('#zoom [data-part="book-closed"]').getAttribute('opacity'),'1');
+  await asento(.54);
+  assert.match(await sivu.locator('#zoom [data-part="book-turn"]').getAttribute('transform'),/rotate\(246 23 14\).*scale\(0.73 1\)/,'otteenvaihdon pito ja syvyyssuunnan kallistus ovat julkaistussa versiossa');
   await asento(.56);assert.ok(await sivu.locator('#zoom [data-part="whistle"]').count()>0);
   assert.equal(await sivu.locator('#zoom [data-part="book-open"]').getAttribute('opacity'),'0');
   await asento(.855);assert.ok((await sivu.locator('#zoom [data-part="glasses-adjust"]').getAttribute('transform')).startsWith('translate(0 -4)'));

@@ -57,3 +57,6 @@ seitsemän nopeaa sivunkääntöä syvässä kyyryssä, hiki, havahtuminen, kirj
 läimäys kiinni, pitkäksi suoristautuminen, visuaalinen vihellys ja hidas
 kirjan kääntö, kirjan avaaminen, silmälasien oikaisu ja arvokas loppuasento.
 Se on erillinen harvinainen sähläysnumero; hyväksytty rauhallinen selaus säilyy.
+Suljettu kirja ei vain pyöri paikoillaan: ranteen vastaliike, nosto rinnan
+lähelle, kahden kierron välissä tapahtuva otteenvaihto ja syvyyssuunnan
+kallistus saavat esineen seuraamaan Pulun siipeä ja vartaloa.
