@@ -27,93 +27,33 @@ Versiopolut estävät uuden sivun ja vanhan JavaScriptin sekoittumisen
 välimuistissa. Vanhat versiot jäävät talteen. Sivusto ei käytä service workeria,
 seurantaa, kirjautumista, äänten generointia tai pelitallennuksia.
 
-Julkaisutyökalu kopioi vain yksitoista nimettyä katselutiedostoa ja alkuperäiset
+Julkaisutyökalu kopioi vain kymmenen nimettyä katselutiedostoa ja alkuperäiset
 käyttöehdot julkisesta Matkakirja-reposta. Se sovittaa sivun ulkolinkit ja astronautin
 kypärän osoitteen itsenäiselle sivustolle; pelin lähdetiedostot eivät muutu.
 Sivusto on tekijän tilaama erillinen katselu, ja alkuperäiset käyttöehdot
 säilyvät. Julkisuus ei anna oikeutta käyttää aineistoa muihin tuotteisiin.
 
-## Seuraava taiteellinen vaihe
+## Nykyinen taiteellinen suunta
 
-Kirjan korjattu suunta ja kannet on hyväksytty 22.9.2026: niitä ei muuteta.
-Omistaja on antanut luvan siirtää myös vanhat eleet uuden katselupohjan
-sulavaan liikkeeseen. **Hauska nähdä** -eleen linnunsuun jälkeen toinen
-erä kokeilee suuta naurussa, haukotuksessa, virneessä ja epäuskossa.
-Suun käyttö valitaan ilmeen tarkoituksen mukaan;
-sitä ei lisätä jokaiseen eleeseen automaattisesti. Katselumuutos ja peliin
-integrointi ovat erilliset vaiheet.
+Omistajan 22.9.2026 palautteen jälkeen katselun kaikki kymmenen
+**Uudet versiot** -elettä käyttävät alkuperäisen Pulun SVG-kasvoja,
+nokkaa ja vartaloa. Sarjakuvahahmon viisi viimeisintä versiota on poistettu
+nykyisestä valikoimasta. Myös vanhoihin eleisiin kokeiltu suurennettu suu
+ja kieli on poistettu; ilmeet tulevat taas alkuperäisestä piirroksesta.
+Aiemmat julkaisuversiot säilyvät teknisessä versiohistoriassa.
+
+Uusi **Ihana nähdä! — vanha Pulu** hyödyntää onnistuneen tervehdyksen
+liikeratoja: katse ehtii ensin, siipi käy rinnalla ja nousee sitten korkeaan
+vilkutukseen. Rintasiipi, pää, hengitys ja siivenkärjet liikkuvat eri tahdissa.
+Kirjan hyväksytty suunta ja peittelyele, hikipisarat sekä käsieleet säilyvät.
+Katselun ehdotuksia ei ole kytketty peliin.
 
 ## Selainvarmennus
 
 `node tyokalut/tarkista-selain.mjs` tarkistaa julkisen osoitteen kaikki
-84 valintaa, neljäntoista ehdotuksen aidon ajallisen toiston, suun ja kielen
-näkyvyyden, kirjan suunnan, 390 px leveyden, vähennetyn liikkeen sekä
-kaikkien julkaistujen tiedostojen tiivisteet. Se tarvitsee Playwrightin;
+80 valintaa, kymmenen ehdotuksen ajallisen toiston, alkuperäisen Pulun
+kasvot ja nokan, rintasiiven ja korkean vilkutuksen, kirjan suunnan ja
+hikipisarat, 390 px leveyden, vähennetyn liikkeen sekä julkaistujen
+tiedostojen SHA-256-tiivisteet. Se tarvitsee Playwrightin;
 `PLAYWRIGHT_MODULE` voi osoittaa valmiiseen asennukseen ja `CHROME_PATH`
-paikalliseen Chromeen. Kuittaus tulostuu lopuksi, kaappaukset menevät
-oletuksena `/tmp/pulu-julkaistu-suu.png` ja `/tmp/pulu-julkaistu-kirja.png`.
-
-Viides katseluele on omistajan pyytämä **Kiireinen kirjanhaku** (11 s):
-seitsemän nopeaa sivunkääntöä syvässä kyyryssä, hiki, havahtuminen, kirjan
-läimäys kiinni, pitkäksi suoristautuminen, visuaalinen vihellys ja hidas
-kirjan kääntö, kirjan avaaminen, silmälasien oikaisu ja arvokas loppuasento.
-Se on erillinen harvinainen sähläysnumero; hyväksytty rauhallinen selaus säilyy.
-Suljettu kirja ei vain pyöri paikoillaan: ranteen vastaliike, nosto rinnan
-lähelle, kahden kierron välissä tapahtuva otteenvaihto ja syvyyssuunnan
-kallistus saavat esineen seuraamaan Pulun siipeä ja vartaloa.
-
-Toisen erän neljä versiota ovat ryhmän alussa: **Hiljainen naurunpyrskähdys**,
-**Valtava haukotus**, **Leveä virne** ja **Et ole tosissasi**. Nauru purkautuu
-kahdessa erikokoisessa painotuksessa, haukotus kasvaa venytykseen, virne
-alkaa silmistä ja epäusko jää hetkeksi paikalleen suu raollaan.
-Kieli ja posken läpi näkyvä aukko kuuluvat kaikkiin neljään. Aiemmat viisi
-katseluversiota säilyvät muuttumattomina. Tämäkään erä ei muuta peliä.
-
-## Erillinen sarjakuvakokeilu
-
-Omistajan 22.9.2026 pyytämä Aku Ankka -henkinen piirrostyylin kokeilu on
-ryhmän painike **Sarjakuvapulu — tyylikokeilu**. Se käyttää omaa
-SVG-piirrosta ja tutun tervehdyksen ajoitusta. Livia on omistajan täsmennyksen
-mukaan nuori naaras: utelias, viehättävä ja omanarvontuntoinen. Koralliroosa
-kaulahuivi, suuret silmät, selkeä ääriviiva ja joustava nokka muuttavat
-piirroksen ilmettä. Ei ihmishuulia tai hampaita. Aiemmat yhdeksän ehdotusta
-säilyvät tavulleen. Tämä ei ole hahmon vaihtaminen peliin.
-
-Omistajan seuraava tarkennus: oma kyyhkyhahmo sarjakuvan maailmassa,
-ei Aku Ankkaa muistuttava Pulu. Toisessa piirroksessa on lyhyempi ja
-terävämpi kyyhkyn nokka, kevyemmät kulmat, lämpimämpi katse, pienet
-ripset ja pehmeämmät posket. Huivi ja tervehdysrata säilyvät. Sama
-kokeilupainike päivittyy, edellinen piirros säilyy versiona
-`cc2bf7a24c35-571733d1`.
-
-### Hyväksytyn sarjakuvahahmon oma ele
-
-**Ihana nähdä!** on oma painike (4,4 s). Livia huomaa
-pelaajan, ilahtuu, painaa siiven hetkeksi rinnalleen ja tervehtii yhdellä
-siivellä. Katse johtaa, vartalo hengittää ja siivenkärjet sekä huivi
-seuraavat viiveellä. Nopea havainto ja rauhallinen kontaktipito ovat eri
-tahdeissa. Jalat pysyvät maassa ja ele palaa tarkasti lepoon.
-
-Hyväksytty hahmopiirros säilyy. Kymmenen aiempaa ehdotusta tuottavat
-samat SVG:t 101 vaiheessa kukin kuin lähdecommitissa `0228e45468b3`.
-Tämäkin ele on itsenäisen katselusivun ehdotus, ei pelin uusi hahmo.
-
-Omistajan seuraava kasvotarkennus: kapeammat kasvot ja hieman särmää
-silmiin. Poskien siluetti kapenee kohti leukaa, takaraivon leveys pienenee
-ja poskien vaalea pyöreä alue on pienempi. Silmät ovat mantelimaisemmat,
-yläluomet viistot ja kulmat hieman epäsymmetriset. Lämmin katse, kieli,
-huivi ja kaikki liikeradat säilyvät. Muutos näkyy molemmissa tämän
-sarjakuvahahmon kokeiluissa; yhdeksän vanhan hahmon versiota ei muutu.
-
-### Kolme hymykokeilua
-
-Ryhmän alussa ovat **Leveä iloinen hymy**, **Pieni suljettu hymy** ja
-**Avoin iloinen nauru** (kukin 4,4 s). Hymy leviää nokan takana posken
-suuntaan, ja poski nostaa alaluomea. Nokan etuosan piirros pysyy samana
-kaikissa vaiheissa. Pieni hymy ei avaa suuta. Leveä hymy avautuu vain vähän.
-Naurussa suu avautuu kahteen erikokoiseen painotukseen ja kieli näkyy.
-Suun etuosan aukosta näkyy tausta; poski ei täytä nokkaväliä.
-
-Kokeilut ovat erillisiä painikkeita, eivät korvaa nykyistä tervehdystä.
-Aiemmat 11 ehdotusta säilyvät tavulleen 1111 asennossa verrattuna
-lähdecommittiin `06d62ad2ca02`. Pelin hahmoa tai ohjainta ei muuteta.
+paikalliseen Chromeen.
