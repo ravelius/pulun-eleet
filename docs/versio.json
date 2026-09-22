@@ -1,0 +1,58 @@
+{
+  "lahde": "https://github.com/ravelius/Matkakirja",
+  "haara": "codex/pulu-luonteva-rytmi-20260922",
+  "commit": "b3ed99b3667e922314d4eddc9dba80b1aa375011",
+  "versio": "b3ed99b3667e-7a2436f3",
+  "tiedostot": [
+    {
+      "polku": "docs/livia-svg.html",
+      "lahdeSha256": "3308e1caf1b059003f70ef696bf5154e58077f12e800c45ccc7e8c52f1610cbd",
+      "julkaisuSha256": "908ce2de0a184629d71e1333fd0a88672e89e4acd6de129a607db59a5595761a"
+    },
+    {
+      "polku": "docs/livia-svg.css",
+      "lahdeSha256": "1f171dd98481f99905392b9fba299d67b923e911bedb39fb18fcb8839e7e4de3",
+      "julkaisuSha256": "1f171dd98481f99905392b9fba299d67b923e911bedb39fb18fcb8839e7e4de3"
+    },
+    {
+      "polku": "docs/livia-svg-demo.mjs",
+      "lahdeSha256": "a890934bfb7631a18eddd8625fe9c0bef190d1af14f83f728ca1cbf81f9b5953",
+      "julkaisuSha256": "a890934bfb7631a18eddd8625fe9c0bef190d1af14f83f728ca1cbf81f9b5953"
+    },
+    {
+      "polku": "docs/livia-uudet-versiot.mjs",
+      "lahdeSha256": "c7dca2fc6374d00cc183e61c4430d591f20dadfbfe4a505d739195aa3eff4943",
+      "julkaisuSha256": "c7dca2fc6374d00cc183e61c4430d591f20dadfbfe4a505d739195aa3eff4943"
+    },
+    {
+      "polku": "js/livia-svg.js",
+      "lahdeSha256": "f700e1557c0a76eb220d7cb2bc6f116be476d25b9873e3dbee61523236297763",
+      "julkaisuSha256": "f700e1557c0a76eb220d7cb2bc6f116be476d25b9873e3dbee61523236297763"
+    },
+    {
+      "polku": "js/livia-svg-paa.js",
+      "lahdeSha256": "a01eab453e4e37b736e857cefcbf6efe45fdbcc1009d506f714d5c3bc289b397",
+      "julkaisuSha256": "a01eab453e4e37b736e857cefcbf6efe45fdbcc1009d506f714d5c3bc289b397"
+    },
+    {
+      "polku": "js/livia-pikselit.js",
+      "lahdeSha256": "054a32eda489490b02c471de56a5ae6744d45a2296230130e5868a9b6e7a5f14",
+      "julkaisuSha256": "054a32eda489490b02c471de56a5ae6744d45a2296230130e5868a9b6e7a5f14"
+    },
+    {
+      "polku": "js/livia-hoyhenet.js",
+      "lahdeSha256": "c00c0c1bbb91b5ed2385c8a5545f4e303da73cc8a76833dcdbfb1740904ce72b",
+      "julkaisuSha256": "c00c0c1bbb91b5ed2385c8a5545f4e303da73cc8a76833dcdbfb1740904ce72b"
+    },
+    {
+      "polku": "js/livia-astronautti.js",
+      "lahdeSha256": "202b2387478013cbab5718bd8cd2f04d2f1aa954969e4d589c2ae89206ee3494",
+      "julkaisuSha256": "e0a859fdd3ff2bdfd8d999f5632e143438079a1bdb31e113c07d6370845a21e5"
+    },
+    {
+      "polku": "assets/livia/livia-astronauttikypara-2x.png",
+      "lahdeSha256": "d693143e722825953012bc159e5cb007c606d793dfda2960ace1f47c7dcc6dfe",
+      "julkaisuSha256": "d693143e722825953012bc159e5cb007c606d793dfda2960ace1f47c7dcc6dfe"
+    }
+  ]
+}
