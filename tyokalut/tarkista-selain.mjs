@@ -15,10 +15,43 @@ try{
     const {LIVIAN_UUDET_VERSIOT}=await import(new URL('livia-uudet-versiot.mjs',document.baseURI).href);
     return LIVIAN_UUDET_VERSIOT;
   });
-  assert.equal(uudet.length,11,'Livian oma tervehdys ja aiemmat kymmenen ovat mukana');
+  assert.equal(uudet.length,14,'kolme hymykokeilua ja aiemmat yksitoista ovat mukana');
   assert.equal(await sivu.locator('#gesture-categories [aria-pressed=true]').textContent(),`Uudet versiot (${uudet.length})`);
   const asento=async p=>sivu.locator('#position').evaluate((el,p)=>{el.value=p*1000;el.dispatchEvent(new Event('input'));},p);
-  assert.equal(await sivu.locator('#actual svg').getAttribute('data-uusi-versio'),'uusi-livia-ilahtuu');
+  assert.equal(await sivu.locator('#actual svg').getAttribute('data-uusi-versio'),'uusi-hymy-levea');
+  const hymyt=[];
+  for(const id of ['levea','pieni','nauru']){
+    await sivu.locator(`[data-gesture="uusi-hymy-${id}"]`).click();await asento(0);
+    const mittaa=()=>sivu.locator('#zoom').evaluate(el=>({
+      karki:el.querySelector('[data-part="upper-beak"]').getAttribute('d'),
+      leveys:el.querySelector('[data-part="smile-line"]').getBBox().width,
+    }));
+    const lepo=await mittaa();await asento(.335);const hymy=await mittaa();
+    assert.equal(hymy.karki,lepo.karki,'nokan kärjen piirros säilyy hymyn aikana');
+    assert.ok(hymy.leveys>lepo.leveys+(id==='pieni'?7:12),'hymy venyy sivusuunnassa');
+    assert.equal(await sivu.locator('#zoom [data-part="lower-lid-smile"]').count(),2);
+    const nakyy=await sivu.locator('#zoom [data-part="tongue"]').evaluate(el=>{
+      if(Number(el.getAttribute('opacity'))===0)return false;
+      const b=el.getBoundingClientRect();return [.2,.4,.6,.8].some(x=>[.2,.4,.6,.8].some(y=>document.elementFromPoint(b.x+b.width*x,b.y+b.height*y)===el));
+    });
+    assert.equal(nakyy,id==='nauru','kieli näkyy naurussa, ei suljetussa tai pienesti avoimessa hymyssä');
+    if(id==='pieni')assert.equal(await sivu.locator('#zoom [data-part="cartoon-beak"]').getAttribute('data-opening'),'0');
+    if(id==='nauru'){
+      const lapi=await sivu.locator('#zoom').evaluate(el=>{
+        const svg=el.querySelector('svg'),aukko=el.querySelector('[data-part="mouth-space"]');
+        return [124,126,128,130].some(y=>{
+          const p=new DOMPoint(70,y);if(!aukko.isPointInFill(p))return false;
+          const ruutu=p.matrixTransform(aukko.getScreenCTM()),osuma=document.elementFromPoint(ruutu.x,ruutu.y);
+          return osuma===svg||osuma===el;
+        });
+      });
+      assert.ok(lapi,'nokan etuosan aukosta näkyy oikeasti tausta');
+    }
+    hymyt.push({id,leveys:hymy.leveys,lepoLeveys:lepo.leveys,kieli:nakyy});
+  }
+  await sivu.locator('[data-gesture="uusi-hymy-levea"]').click();await asento(.6);
+  await sivu.screenshot({path:process.env.KUVA_HYMY||'/tmp/pulu-julkaistu-hymy.png'});
+  await sivu.locator('[data-gesture="uusi-livia-ilahtuu"]').click();
   await asento(.325);
   assert.equal(await sivu.locator('#zoom [data-part="chest-elbow"]').count(),1);
   assert.equal(await sivu.locator('#zoom [data-part="chest-elbow"]').getAttribute('opacity'),'1');
@@ -118,7 +151,7 @@ try{
   assert.deepEqual([...nahdyt],uudet.map(e=>e.id));
   assert.equal(await sivu.locator('#all').getAttribute('aria-pressed'),'false');
   await sivu.setViewportSize({width:390,height:844});
-  await sivu.locator('[data-gesture="uusi-livia-ilahtuu"]').click();await asento(.3);
+  await sivu.locator('[data-gesture="uusi-hymy-levea"]').click();await asento(.3);
   assert.equal(await sivu.evaluate(()=>document.documentElement.scrollWidth),390);
   await sivu.emulateMedia({reducedMotion:'reduce'});
   // matchMedia-change saapuu seuraavalla selainkierroksella.
@@ -139,5 +172,5 @@ try{
     const hash=createHash('sha256').update(Buffer.from(await r.arrayBuffer())).digest('hex');
     assert.equal(hash,tiedosto.julkaisuSha256,tiedosto.polku);
   }
-  console.log(JSON.stringify({osoite,versio:kuitti.versio,kategorioita:kategoriat.length,eleita:eleet.size,uusiaLiikkeessa:[...nahdyt],virheet,ihanaNahda:'PASS',kasvojenMitta,sarjakuvakokeiluJaHuivi:'PASS',suu:'PASS',toinenSuuerä:'PASS',kirja:'PASS',mobiili:'PASS',reduced:'PASS',tiedostojenTiivisteet:'PASS',kypara},null,2));
+  console.log(JSON.stringify({osoite,versio:kuitti.versio,kategorioita:kategoriat.length,eleita:eleet.size,uusiaLiikkeessa:[...nahdyt],virheet,hymyt,ihanaNahda:'PASS',kasvojenMitta,sarjakuvakokeiluJaHuivi:'PASS',suu:'PASS',toinenSuuerä:'PASS',kirja:'PASS',mobiili:'PASS',reduced:'PASS',tiedostojenTiivisteet:'PASS',kypara},null,2));
 }finally{await selain.close();}

@@ -46,7 +46,7 @@ integrointi ovat erilliset vaiheet.
 ## Selainvarmennus
 
 `node tyokalut/tarkista-selain.mjs` tarkistaa julkisen osoitteen kaikki
-81 valintaa, yhdentoista ehdotuksen aidon ajallisen toiston, suun ja kielen
+84 valintaa, neljäntoista ehdotuksen aidon ajallisen toiston, suun ja kielen
 näkyvyyden, kirjan suunnan, 390 px leveyden, vähennetyn liikkeen sekä
 kaikkien julkaistujen tiedostojen tiivisteet. Se tarvitsee Playwrightin;
 `PLAYWRIGHT_MODULE` voi osoittaa valmiiseen asennukseen ja `CHROME_PATH`
@@ -88,7 +88,7 @@ kokeilupainike päivittyy, edellinen piirros säilyy versiona
 
 ### Hyväksytyn sarjakuvahahmon oma ele
 
-**Ihana nähdä!** on ryhmän ensimmäinen painike (4,4 s). Livia huomaa
+**Ihana nähdä!** on oma painike (4,4 s). Livia huomaa
 pelaajan, ilahtuu, painaa siiven hetkeksi rinnalleen ja tervehtii yhdellä
 siivellä. Katse johtaa, vartalo hengittää ja siivenkärjet sekä huivi
 seuraavat viiveellä. Nopea havainto ja rauhallinen kontaktipito ovat eri
@@ -104,3 +104,16 @@ ja poskien vaalea pyöreä alue on pienempi. Silmät ovat mantelimaisemmat,
 yläluomet viistot ja kulmat hieman epäsymmetriset. Lämmin katse, kieli,
 huivi ja kaikki liikeradat säilyvät. Muutos näkyy molemmissa tämän
 sarjakuvahahmon kokeiluissa; yhdeksän vanhan hahmon versiota ei muutu.
+
+### Kolme hymykokeilua
+
+Ryhmän alussa ovat **Leveä iloinen hymy**, **Pieni suljettu hymy** ja
+**Avoin iloinen nauru** (kukin 4,4 s). Hymy leviää nokan takana posken
+suuntaan, ja poski nostaa alaluomea. Nokan etuosan piirros pysyy samana
+kaikissa vaiheissa. Pieni hymy ei avaa suuta. Leveä hymy avautuu vain vähän.
+Naurussa suu avautuu kahteen erikokoiseen painotukseen ja kieli näkyy.
+Suun etuosan aukosta näkyy tausta; poski ei täytä nokkaväliä.
+
+Kokeilut ovat erillisiä painikkeita, eivät korvaa nykyistä tervehdystä.
+Aiemmat 11 ehdotusta säilyvät tavulleen 1111 asennossa verrattuna
+lähdecommittiin `06d62ad2ca02`. Pelin hahmoa tai ohjainta ei muuteta.
