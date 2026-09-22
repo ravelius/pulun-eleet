@@ -15,14 +15,16 @@ try{
     const {LIVIAN_UUDET_VERSIOT}=await import(new URL('livia-uudet-versiot.mjs',document.baseURI).href);
     return LIVIAN_UUDET_VERSIOT;
   });
-  assert.equal(uudet.length,10);
+  assert.equal(uudet.length,72);
   assert.equal(uudet[0].id,'uusi-ilahtuu');
+  const poiminnat=uudet.filter(e=>e.group==='Uudet versiot');
+  assert.equal(poiminnat.length,10);
   assert.equal(await sivu.locator('#gesture-categories [aria-pressed=true]').textContent(),'Uudet versiot (10)');
   assert.equal(await sivu.locator('#actual svg').getAttribute('data-uusi-versio'),'uusi-ilahtuu');
   const asento=async p=>sivu.locator('#position').evaluate((el,p)=>{
     el.value=p*1000;el.dispatchEvent(new Event('input'));
   },p);
-  for(const e of uudet){
+  for(const e of poiminnat){
     await sivu.locator(`[data-gesture="${e.id}"]`).click();await asento(.4);
     const svg=await sivu.locator('#zoom').innerHTML();
     assert.match(svg,/fill="#2e4756"/,e.id+' vanha nokka');
@@ -63,16 +65,22 @@ try{
       assert.ok(!/NaN|Infinity|undefined/.test(await sivu.locator('#actual').innerHTML()),id);
     }
   }
-  assert.equal(eleet.size,80);
+  assert.equal(eleet.size,142);
+  await sivu.locator('[data-category="uusi-Pelitilanne"]').click();
+  await sivu.locator('[data-gesture="uusi-bunFeast"]').click();await asento(.55);
+  assert.equal(await sivu.locator('#actual [data-part="preview-bun"]').count(),1);
+  assert.equal(await sivu.locator('#actual [data-part="holding-wing"]').count(),1);
+  await sivu.locator('[data-gesture="uusi-mapPeck"]').click();await asento(.335);
+  assert.equal(await sivu.locator('#actual [data-part="map-contact"]').count(),1);
   await sivu.locator('[data-category="uudet-versiot"]').click();
   await sivu.locator('#all').click();
-  const nahdyt=new Set(),loppuraja=Date.now()+uudet.reduce((sum,e)=>sum+e.duration+650,0)+5000;
+  const nahdyt=new Set(),loppuraja=Date.now()+poiminnat.reduce((sum,e)=>sum+e.duration+650,0)+5000;
   while(Date.now()<loppuraja){
     nahdyt.add(await sivu.locator('#actual svg').getAttribute('data-uusi-versio'));
     if(await sivu.locator('#all').getAttribute('aria-pressed')==='false')break;
     await sivu.waitForTimeout(500);
   }
-  assert.deepEqual([...nahdyt],uudet.map(e=>e.id));
+  assert.deepEqual([...nahdyt],poiminnat.map(e=>e.id));
   assert.equal(await sivu.locator('#all').getAttribute('aria-pressed'),'false');
   await sivu.setViewportSize({width:390,height:844});
   await sivu.locator('[data-gesture="uusi-ilahtuu"]').click();await asento(.3);

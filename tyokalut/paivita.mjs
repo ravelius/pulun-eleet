@@ -18,7 +18,7 @@ const commit=git('rev-parse','HEAD'),haara=git('branch','--show-current');
 const tiedostot=[
   'LICENSE',
   'docs/livia-svg.html','docs/livia-svg.css','docs/livia-svg-demo.mjs','docs/livia-uudet-versiot.mjs',
-  'js/livia-svg.js','js/livia-svg-paa.js','js/livia-pikselit.js','js/livia-hoyhenet.js','js/livia-astronautti.js',
+  'js/livia-svg.js','js/livia-uudet-versiot.js','js/livia-svg-paa.js','js/livia-pikselit.js','js/livia-hoyhenet.js','js/livia-astronautti.js',
   'assets/livia/livia-astronauttikypara-2x.png',
 ];
 const hash=data=>createHash('sha256').update(data).digest('hex');
